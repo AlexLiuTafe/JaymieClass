@@ -10,6 +10,7 @@ public class QuestGoal
     public int requiredAmount;
     //Current Amount
     public int currentAmount;
+    
     //IsReached
     public bool IsReached()
     {
@@ -18,8 +19,10 @@ public class QuestGoal
     //Enemy Killer
     public void EnemyKilled()
     {
+        
         if(goalType ==GoalType.Kill)
         {
+            
             currentAmount++;
         }
     }

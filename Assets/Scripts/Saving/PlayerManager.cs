@@ -7,7 +7,6 @@ public class PlayerManager : MonoBehaviour
 {
     public int level;
     public new string name;
-    
     public float maxHealth, maxMana, maxStam;
     public float curHealth, curMana, curStam;
     public Slider healthBar;
@@ -20,7 +19,16 @@ public class PlayerManager : MonoBehaviour
     public Vector3 savePos;
     public float x, y, z;
 
+    public static int gold;
+    public static int exp;
+    public Text _gold;
+    public Text _exp;
 
+    public void Start()
+    {
+        gold = 0;
+        exp = 0;
+    }
 
     public void SavePlayer()
     {
@@ -53,6 +61,8 @@ public class PlayerManager : MonoBehaviour
         stamBar.value = Mathf.Clamp01(curStam / maxStam);
         HealthManager();
 
+        _gold.text = gold.ToString();
+        _exp.text = exp.ToString();
     }
     void HealthManager()
     {

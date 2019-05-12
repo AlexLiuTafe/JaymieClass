@@ -12,7 +12,7 @@ public class Quest
     //Description
     public string description;
     //Experience Reward
-    public string expReward;
+    public int expReward;
     //Gold Reward
     public int goldReward;
     //Item Reward

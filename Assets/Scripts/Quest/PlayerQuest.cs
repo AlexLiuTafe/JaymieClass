@@ -4,16 +4,21 @@ using UnityEngine;
 
 public class PlayerQuest : MonoBehaviour
 {
+    private EnemyHealth enemyHealth;
+    private QuestGoal questGoal;
     public List<Quest> quests = new List<Quest>();
     public void Update()
     {
+
         for (int i = 0; i < quests.Count; i++)
         {
-            if(quests[i].goal.IsReached())
+           
+            if (quests[i].goal.IsReached())
             {
                 quests[i].Complete();
             }
+
         }
     }
-	
+
 }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -816,8 +816,8 @@ SkinnedMeshRenderer:
   - {fileID: 2100000, guid: 3b343fb96343edc489575e04668d9129, type: 2}
   - {fileID: 2100000, guid: fc9623038baa1304d807fde18c7bdb1b, type: 2}
   - {fileID: 2100000, guid: b344f070b536e2240a7ed78463c3e85d, type: 2}
-  - {fileID: 2100000, guid: be894166ec62ed44d9ea788b3bc0e842, type: 2}
   - {fileID: 2100000, guid: 84a3772b4eb34c74a8ec49f0f16abe0e, type: 2}
+  - {fileID: 2100000, guid: be894166ec62ed44d9ea788b3bc0e842, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3369,20 +3369,33 @@ MonoBehaviour:
   eyesIndex: 0
   armourIndex: 0
   clothesIndex: 0
-  character: {fileID: 0}
+  character: {fileID: 673903277}
   skinMax: 4
   hairMax: 5
   mouthMax: 3
   eyesMax: 4
   armourMax: 11
   clothesMax: 11
-  characterName: Adventurer
+  charName: Adventurer
   charclass: 0
   charRace: 0
-  tempStats: 
-  stats: 
-  statNames: []
-  points: 0
+  tempStats: 000000000000000000000000000000000000000000000000
+  stats: 000000000000000000000000000000000000000000000000
+  statArray:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  selectedClass:
+  - 
+  - 
+  - 
+  - 
+  - 
+  selectedIndex: 0
+  points: 10
 --- !u!1001 &1773257519
 PrefabInstance:
   m_ObjectHideFlags: 0

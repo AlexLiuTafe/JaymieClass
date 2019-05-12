@@ -30,6 +30,8 @@ public class Movement : MonoBehaviour
         //charc is on this game object we need to get the character controller that is attached to it
         _charC = this.GetComponent<CharacterController>();
         canMove = true;
+        
+
 
     }
     #endregion
@@ -37,7 +39,9 @@ public class Movement : MonoBehaviour
     private void Update()
     {
         if(canMove)
-        {   
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
             //if our character is grounded
             if (_charC.isGrounded) //we are able to move in game scene meaning
             {
