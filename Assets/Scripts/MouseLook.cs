@@ -30,7 +30,8 @@ public class MouseLook : MonoBehaviour
 
     private void Start()
     {
-        Cursor.visible = false;
+       
+        
         //if our game object has a rigidbody attached to it
         if (GetComponent<Rigidbody>())
         {

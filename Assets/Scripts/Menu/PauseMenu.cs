@@ -16,12 +16,12 @@ public class PauseMenu : MonoBehaviour
             if (GameIsPause)
             {
                 Resume();
-                
+                Movement.canMove = true;
             }
             else
             {
                 Pause();
-                
+                Movement.canMove = false;
             }
         }
     }
@@ -37,9 +37,8 @@ public class PauseMenu : MonoBehaviour
     }
     public void Pause()
     {
-        
-        Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPause = true;
