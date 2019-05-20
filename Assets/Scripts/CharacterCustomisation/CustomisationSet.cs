@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+
+
 //you will need to change Scenes
 public class CustomisationSet : MonoBehaviour
 {
@@ -47,7 +49,7 @@ public class CustomisationSet : MonoBehaviour
         Cursor.visible = true;
 
         statArray = new string[] { "Strength", "Dexterity", "Constitution", "Wisdom", "Intelligence", "Charisma" };
-        selectedClass = new string[] { "Priest", "Paladin", "Rogue", "Ranger", "Wizard" };
+        selectedClass = new string[] { "Paladin", "Priest", "Rogue", "Ranger", "Wizard" };
 
         //in start we need to set up the following
 
@@ -107,6 +109,8 @@ public class CustomisationSet : MonoBehaviour
         SetTexture("Eyes", eyesIndex = 0);
         SetTexture("Armour", armourIndex = 0);
         SetTexture("Clothes", clothesIndex = 0);
+
+        ChooseClass(0);
         #region do this after making the function SetTexture
         //SetTexture skin, hair, mouth, eyes to the first texture 0
         #endregion
@@ -216,10 +220,11 @@ public class CustomisationSet : MonoBehaviour
     void Save()
     {
 
+        //SetInt for SkinIndex, HairIndex, MouthIndex, EyesIndex,Armour,Clothes
+        CharCustomSaveData.SavePlayerData(this);
+        //SetString CharacterName
     }
-    //Function called Save this will allow us to save our indexes 
-    //SetInt for SkinIndex, HairIndex, MouthIndex, EyesIndex
-    //SetString CharacterName
+
     #endregion
 
     #region OnGUI
@@ -324,11 +329,11 @@ public class CustomisationSet : MonoBehaviour
         i++;
         charName = GUI.TextField(new Rect(0.25f * scrW, scrH + i * (0.5f * scrH), 2 * scrW, 0.5f * scrH), charName, 16);
         i++;
-        #region Save and play   
-        if (GUI.Button(new Rect(0.25f * scrW, scrH + i * (0.5f * scrH), 2 * scrW, 0.5f * scrH), "Save and Play")) ;
+        #region Save and play button  
+        if (GUI.Button(new Rect(0.25f * scrW, scrH + i * (0.5f * scrH), 2 * scrW, 0.5f * scrH), "Save and Play")) 
         {
-            // Save();
-            //SceneManager.LoadScene(1);
+            Save();
+            SceneManager.LoadScene(1);
         }
         i = 0;
         #endregion
@@ -435,8 +440,8 @@ public class CustomisationSet : MonoBehaviour
 }
 public enum characterClass
 {
-    Priest,
     Paladin,
+    Priest,
     Ranger,
     Rogue,
     Wizard
