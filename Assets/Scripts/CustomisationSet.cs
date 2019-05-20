@@ -328,7 +328,7 @@ public class CustomisationSet : MonoBehaviour
         if (GUI.Button(new Rect(0.25f * scrW, scrH + i * (0.5f * scrH), 2 * scrW, 0.5f * scrH), "Save and Play")) ;
         {
             // Save();
-            SceneManager.LoadScene(1);
+            //SceneManager.LoadScene(1);
         }
         i = 0;
         #endregion

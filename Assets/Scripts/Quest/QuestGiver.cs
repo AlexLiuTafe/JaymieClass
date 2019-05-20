@@ -37,8 +37,8 @@ public class QuestGiver : MonoBehaviour
         uI.questWindow.SetActive(true);
         uI.nameText.text = quest.name;
         uI.descriptionText.text = quest.description;
-        uI.expText.text = quest.expReward.ToString();
-        uI.goldText.text = quest.goldReward.ToString();
+        uI.expText.text = "Exp Reward : "+quest.expReward.ToString()+"exp";
+        uI.goldText.text = "Gold Reward : "+quest.goldReward.ToString()+"gold";
         //checking if Quest already accepted
         if (quest.state == QuestState.Accepted)
         {
@@ -56,8 +56,8 @@ public class QuestGiver : MonoBehaviour
         {
             quest.state = QuestState.Accepted;
             uI.player.quests.Add(quest);
-            //activeQuest.actUi.player.quests.Add(quest);
-            
+    
+            //activeQuest.actUi.player.quests.Add(quest);       
         }
         
 

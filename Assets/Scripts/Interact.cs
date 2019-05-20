@@ -11,7 +11,7 @@ public class Interact : MonoBehaviour
     //create two gameobject variables one called player and the other mainCam
     public GameObject player;
     public GameObject playerDialogue;
-    public GameObject questWindow;
+    //public GameObject questWindow;
 
     [Header("Projectile")]
     public GameObject projectilePrefab;
@@ -34,18 +34,18 @@ public class Interact : MonoBehaviour
     #region Update
     private void Update()
     {
-        bool openQuestWIndow = Input.GetButtonDown("Quest");
-        bool closeQuestWIndow = Input.GetButtonUp("Quest");
+        //bool openQuestWIndow = Input.GetButtonDown("Quest");
+        //bool closeQuestWIndow = Input.GetButtonUp("Quest");
         bool shootButton = Input.GetButtonDown("Fire2");
-        if (openQuestWIndow)
-        {
-            ActiveQuestWindow();
-        }
-        if (closeQuestWIndow)
-        {
-            CloseQuestWindow();
+        //if (openQuestWIndow)
+        //{
+        //    ActiveQuestWindow();
+        //}
+        //if (closeQuestWIndow)
+        //{
+        //    CloseQuestWindow();
 
-        }
+        //}
         if(shootButton && Time.time > shootCoolDown)
         {
             Shoot();
@@ -114,11 +114,11 @@ public class Interact : MonoBehaviour
     }
     public void ActiveQuestWindow()
     {
-        questWindow.SetActive(true);
+        //questWindow.SetActive(true);
     }
     public void CloseQuestWindow()
     {
-        questWindow.SetActive(false);
+        //questWindow.SetActive(false);
     }
     public void CanMove()
     {

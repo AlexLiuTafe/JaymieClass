@@ -8,9 +8,8 @@ using UnityEngine.UI;
 
 public class ActiveQuestUI
 {
-    public PlayerQuest player;
+ 
     public GameObject activeQuestWindow;
-
     public Text nameText;
     public Text descriptionText;
     public Text expText;
@@ -18,9 +17,9 @@ public class ActiveQuestUI
 }
 public class ActiveQuest : MonoBehaviour
 {
-    public Quest quest;
     public GameObject questWindow;
     public ActiveQuestUI actUi;
+    public PlayerQuest player;
     public void Update()
     {
         bool openQuestWIndow = Input.GetButtonDown("Quest");
@@ -36,15 +35,18 @@ public class ActiveQuest : MonoBehaviour
     }
     public void OpenQuestWindow()
     {
+        PlayerQuest playerQuest = player.GetComponent<PlayerQuest>();
+
+        actUi.nameText.text = playerQuest.quests[0].name;
+        actUi.descriptionText.text = playerQuest.quests[0].description;
+        actUi.expText.text = "Exp Reward : " + playerQuest.quests[0].expReward.ToString() +"exp";
+        actUi.goldText.text = "Gold Reward : " + playerQuest.quests[0].goldReward.ToString()+"gold";
         
-        actUi.nameText.text = quest.name;
-        actUi.descriptionText.text = quest.description;
-        actUi.expText.text = quest.expReward.ToString();
-        actUi.goldText.text = quest.goldReward.ToString();
     }
         public void ActiveQuestWindow()
     {
         questWindow.SetActive(true);
+        OpenQuestWindow();
     }
     public void CloseQuestWindow()
     {
