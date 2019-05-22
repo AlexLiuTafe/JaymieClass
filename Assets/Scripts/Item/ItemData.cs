@@ -40,7 +40,7 @@ public class ItemData
                 heal = 20;
                 amount = 1;
                 break;
-            case 3:
+            case 2:
                 name = "Coffee";
                 value = 15;
                 description = "Zoom Zoom";
@@ -239,7 +239,7 @@ public class ItemData
                 break;
 
             #endregion
-            #region Scrolls 700-899
+            #region Scrolls 700-799
             case 700:
                 name = "Fire Scroll";
                 value = 10;
@@ -296,7 +296,7 @@ public class ItemData
             Heal = heal,
             Type = type,
             Mesh = Resources.Load("Prefabs/" + mesh) as GameObject,
-            Icon = Resources.Load("Icons/" + icon) as Texture2D
+            Icon = Resources.Load("Icons/"+icon) as Texture2D
         };
         return temp;
     }

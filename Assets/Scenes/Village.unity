@@ -3328,6 +3328,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 735166844}
     m_Modifications:
+    - target: {fileID: 19093668851698200, guid: eb25aceb594d8c547b48feb2a8bd221a,
+        type: 3}
+      propertyPath: m_Name
+      value: Wolf (1)
+      objectReference: {fileID: 0}
     - target: {fileID: 19093668851698205, guid: eb25aceb594d8c547b48feb2a8bd221a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3382,11 +3387,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 19093668851698200, guid: eb25aceb594d8c547b48feb2a8bd221a,
-        type: 3}
-      propertyPath: m_Name
-      value: Wolf (1)
       objectReference: {fileID: 0}
     - target: {fileID: 19093668851698201, guid: eb25aceb594d8c547b48feb2a8bd221a,
         type: 3}
@@ -5860,6 +5860,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 735166844}
     m_Modifications:
+    - target: {fileID: 19093668851698200, guid: eb25aceb594d8c547b48feb2a8bd221a,
+        type: 3}
+      propertyPath: m_Name
+      value: Wolf (2)
+      objectReference: {fileID: 0}
     - target: {fileID: 19093668851698205, guid: eb25aceb594d8c547b48feb2a8bd221a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5914,11 +5919,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 19093668851698200, guid: eb25aceb594d8c547b48feb2a8bd221a,
-        type: 3}
-      propertyPath: m_Name
-      value: Wolf (2)
       objectReference: {fileID: 0}
     - target: {fileID: 19093668851698201, guid: eb25aceb594d8c547b48feb2a8bd221a,
         type: 3}
@@ -9746,6 +9746,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1405671387}
   - component: {fileID: 1405671386}
+  - component: {fileID: 1405671388}
   m_Layer: 0
   m_Name: LoadCustom
   m_TagString: Untagged
@@ -9766,6 +9767,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   character: {fileID: 0}
+  customSet: {fileID: 0}
+  skin: 0
+  hair: 0
+  mouth: 0
+  eyes: 0
+  armour: 0
+  clothes: 0
+  characterName: 
 --- !u!4 &1405671387
 Transform:
   m_ObjectHideFlags: 0
@@ -9780,6 +9789,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1405671388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1405671385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 242b71240ee76964785cc4c2a3225354, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scr: {x: 0, y: 0}
+  scrollPos: {x: 0, y: 0}
+  sortTypes: []
+  selectedType: 
+  equippedLocations: []
+  dropLocation: {fileID: 0}
+  curWeapon: {fileID: 0}
+  curHelm: {fileID: 0}
 --- !u!1 &1407517684
 GameObject:
   m_ObjectHideFlags: 0
@@ -14747,6 +14776,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 735166844}
     m_Modifications:
+    - target: {fileID: 19093668851698200, guid: eb25aceb594d8c547b48feb2a8bd221a,
+        type: 3}
+      propertyPath: m_Name
+      value: Wolf
+      objectReference: {fileID: 0}
     - target: {fileID: 19093668851698205, guid: eb25aceb594d8c547b48feb2a8bd221a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14802,11 +14836,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 19093668851698200, guid: eb25aceb594d8c547b48feb2a8bd221a,
-        type: 3}
-      propertyPath: m_Name
-      value: Wolf
-      objectReference: {fileID: 0}
     - target: {fileID: 19093668851698201, guid: eb25aceb594d8c547b48feb2a8bd221a,
         type: 3}
       propertyPath: player
@@ -14817,11 +14846,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 20860127127334992}
-    - target: {fileID: 19093667971995566, guid: eb25aceb594d8c547b48feb2a8bd221a,
-        type: 3}
-      propertyPath: m_Interactable
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 19093668338842548, guid: eb25aceb594d8c547b48feb2a8bd221a,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -14831,6 +14855,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19093667971995566, guid: eb25aceb594d8c547b48feb2a8bd221a,
+        type: 3}
+      propertyPath: m_Interactable
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb25aceb594d8c547b48feb2a8bd221a, type: 3}
