@@ -95,9 +95,12 @@ public class Inventory : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-
-            ToggleInv();
-
+            //if game if not paused
+            if(PauseMenu.GameIsPause == false)
+            {
+                ToggleInv();
+            }
+            
         }
         if (Input.GetKeyDown(KeyCode.I))
         {

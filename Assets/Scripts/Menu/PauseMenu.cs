@@ -5,10 +5,10 @@ using UnityEngine;
  
 public class PauseMenu : MonoBehaviour
 {
-     
+    
     public static bool GameIsPause = false;
     public GameObject pauseMenuUI;
-
+    
     void Update()
     {
         if (Input.GetButtonDown("Pause"))
@@ -39,7 +39,6 @@ public class PauseMenu : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPause = true;
         
