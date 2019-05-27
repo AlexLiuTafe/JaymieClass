@@ -421,7 +421,7 @@ public class Inventory : MonoBehaviour
             }
             else
             {
-                if (item == null && selectedItem.Mesh.name == item.name)
+                if (item != null && selectedItem.Mesh.name == item.name)
                 {
                     if (GUI.Button(new Rect(15 * scr.x, 8.75f * scr.y, scr.x, 0.25F * scr.y), "UnEquip"))
                     {
@@ -450,9 +450,9 @@ public class Inventory : MonoBehaviour
             DisplayInv(selectedType);
             if (selectedItem != null)
             {
+                DisplayItem();
                 GUI.DrawTexture(new Rect(11 * scr.x, 1.5f * scr.y, 2 * scr.x, 2 * scr.y), selectedItem.Icon);
             }
-            DisplayItem();
         }
 
     }

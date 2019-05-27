@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 3042200156462651635}
   - component: {fileID: 7739973916890194199}
   - component: {fileID: 383566191634967730}
+  - component: {fileID: 8027440104214130003}
   m_Layer: 0
-  m_Name: Hammer_Mesh
-  m_TagString: Untagged
+  m_Name: Gun_Mesh
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27,8 +28,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1554760848337377874}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 16.183, y: 1.15, z: 14.0864}
-  m_LocalScale: {x: 0.66236, y: 0.23904574, z: 0.27242866}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2901833162011946404}
   - {fileID: 5385097790930067102}
@@ -93,6 +94,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8027440104214130003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1554760848337377874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c22bb5d13290e40479414942c0b3160f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idNum: 102
+  amount: 1
+  type: 1
 --- !u!1 &4328387112254323965
 GameObject:
   m_ObjectHideFlags: 0
@@ -150,7 +166,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7838391143788987489}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.58, z: 0}
+  m_LocalPosition: {x: -0.341, y: -0.73, z: 0}
   m_LocalScale: {x: 0.28374, y: 2.4386, z: 1}
   m_Children: []
   m_Father: {fileID: 138748968490563521}

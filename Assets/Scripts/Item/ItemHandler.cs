@@ -14,7 +14,7 @@ public class ItemHandler : MonoBehaviour
         {
             Inventory.money += amount;
         }
-        else if(type != ItemType.Weapon || type != ItemType.Apparel)
+        else if(!(type == ItemType.Weapon || type == ItemType.Apparel))
         {
             int found = 0;
             int addMe = 0;
@@ -23,7 +23,7 @@ public class ItemHandler : MonoBehaviour
                 if(idNum == Inventory.inv[i].ItemID)
                 {
                     found = 1;
-                    addMe = 1;
+                    addMe = i;
 
                 }
             }

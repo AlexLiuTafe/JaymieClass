@@ -285,6 +285,7 @@ GameObject:
   - component: {fileID: 7999271835326187762}
   - component: {fileID: 1359855397083013233}
   - component: {fileID: 1588040881191776495}
+  - component: {fileID: 1631001848007315329}
   m_Layer: 0
   m_Name: Coconut_Mesh
   m_TagString: Untagged
@@ -367,3 +368,18 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1631001848007315329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7580001281169561447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c22bb5d13290e40479414942c0b3160f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idNum: 1
+  amount: 1
+  type: 0

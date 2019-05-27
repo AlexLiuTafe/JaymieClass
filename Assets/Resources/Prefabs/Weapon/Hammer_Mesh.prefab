@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 2348209620028325972}
   - component: {fileID: 2348209620025458804}
   - component: {fileID: 2348209620026426036}
+  - component: {fileID: 7934328788055432271}
   m_Layer: 0
-  m_Name: axe
-  m_TagString: Untagged
+  m_Name: Hammer_Axe
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25,13 +26,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2348209620028628084}
-  m_LocalRotation: {x: -0.10569472, y: -0.036418304, z: 0.7563708, w: -0.6445196}
+  m_LocalRotation: {x: 0.10569807, y: 0.0364183, z: -0.756372, w: 0.6445177}
   m_LocalPosition: {x: -0.3373634, y: 0.3301156, z: -0.024464961}
   m_LocalScale: {x: 0.0967336, y: 0.09673298, z: 0.0967336}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 11.031, y: -6.6080003, z: -99.769005}
 --- !u!33 &2348209620025458804
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -77,3 +78,18 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &7934328788055432271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2348209620028628084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c22bb5d13290e40479414942c0b3160f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idNum: 101
+  amount: 1
+  type: 1
