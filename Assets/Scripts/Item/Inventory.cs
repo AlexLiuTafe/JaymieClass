@@ -25,6 +25,7 @@ public class Inventory : MonoBehaviour
     public Transform dropLocation;
     public GameObject curWeapon;
     public GameObject curHelm;
+    public PlayerManager player; // for refencing HealthBar
 
     #endregion
 
@@ -96,11 +97,11 @@ public class Inventory : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             //if game if not paused
-            if(PauseMenu.GameIsPause == false)
+            if (PauseMenu.GameIsPause == false)
             {
                 ToggleInv();
             }
-            
+
         }
         if (Input.GetKeyDown(KeyCode.I))
         {
@@ -224,9 +225,218 @@ public class Inventory : MonoBehaviour
             }
         }
     }
+    void DisplayItem()
+    {
+        switch (selectedItem.Type)
+        {
+            //NOTE* Only Healing Items have the Heal variable
+            case ItemType.Food:
+                GUI.Box(new Rect(8 * scr.x, 5 * scr.y, 8 * scr.x, 3 * scr.y), selectedItem.Name + "\n" + selectedItem.Description +
+                    "\nValue: " + selectedItem.Value + "\nHeal: " + selectedItem.Heal + "\nAmount: " + selectedItem.Amount);
+                if (player.curHealth < player.maxHealth)
+                {
+                    if (GUI.Button(new Rect(15 * scr.x, 8.75f * scr.y, scr.x, 0.25f * scr.y), "Eat"))
+                    {
+                        player.curHealth += selectedItem.Heal;
+                        DepleteAmount();
+                    }
+                }
+                if (GUI.Button(new Rect(14 * scr.x, 8.75f * scr.y, scr.x, 0.25f * scr.y), "Discard"))
+                {
+                    Discard();
+                }
+                break;
+            //Wepon Region
+            case ItemType.Weapon:
+                GUI.Box(new Rect(8 * scr.x, 5 * scr.y, 8 * scr.x, 3 * scr.y), selectedItem.Name + "\n" + selectedItem.Description +
+                    "\nValue: " + selectedItem.Value + "\nDamage: " + selectedItem.Damage + "\nAmount: " + selectedItem.Amount);
+
+                EquipItem(curWeapon, 0);//Equip Button is already in the function
+
+                if (GUI.Button(new Rect(14 * scr.x, 8.75f * scr.y, scr.x, 0.25f * scr.y), "Discard"))
+                {
+                    Discard();
+                }
+                break;
+            case ItemType.Apparel:
+                GUI.Box(new Rect(8 * scr.x, 5 * scr.y, 8 * scr.x, 3 * scr.y), selectedItem.Name + "\n" + selectedItem.Description +
+                    "\nValue: " + selectedItem.Value + "\nArmour: " + selectedItem.Armour + "\nAmount: " + selectedItem.Amount);
+
+                EquipItem(curHelm, 1);//Equip Button is already in the function
+
+                if (GUI.Button(new Rect(14 * scr.x, 8.75f * scr.y, scr.x, 0.25f * scr.y), "Discard"))
+                {
+                    Discard();
+                }
+                break;
+            case ItemType.Crafting:
+                GUI.Box(new Rect(8 * scr.x, 5 * scr.y, 8 * scr.x, 3 * scr.y), selectedItem.Name + "\n" + selectedItem.Description +
+                    "\nValue: " + selectedItem.Value + "\nAmount: " + selectedItem.Amount);
+
+                if (GUI.Button(new Rect(15 * scr.x, 8.75f * scr.y, scr.x, 0.25f * scr.y), "Use"))
+                {
+
+                    DepleteAmount();
+                }
+
+                if (GUI.Button(new Rect(14 * scr.x, 8.75f * scr.y, scr.x, 0.25f * scr.y), "Discard"))
+                {
+                    Discard();
+                }
+                break;
+            case ItemType.Quest:
+                GUI.Box(new Rect(8 * scr.x, 5 * scr.y, 8 * scr.x, 3 * scr.y), selectedItem.Name + "\n" + selectedItem.Description +
+                    "\nValue: " + selectedItem.Value + "\nAmount: " + selectedItem.Amount);
+
+                if (GUI.Button(new Rect(15 * scr.x, 8.75f * scr.y, scr.x, 0.25f * scr.y), "Use"))
+                {
+
+                    DepleteAmount();
+                }
+
+                if (GUI.Button(new Rect(14 * scr.x, 8.75f * scr.y, scr.x, 0.25f * scr.y), "Discard"))
+                {
+                    Discard();
+                }
+                break;
+            case ItemType.Ingredient:
+                GUI.Box(new Rect(8 * scr.x, 5 * scr.y, 8 * scr.x, 3 * scr.y), selectedItem.Name + "\n" + selectedItem.Description +
+                    "\nValue: " + selectedItem.Value + "\nAmount: " + selectedItem.Amount);
+
+                if (GUI.Button(new Rect(15 * scr.x, 8.75f * scr.y, scr.x, 0.25f * scr.y), "Use"))
+                {
+
+                    DepleteAmount();
+                }
+
+                if (GUI.Button(new Rect(14 * scr.x, 8.75f * scr.y, scr.x, 0.25f * scr.y), "Discard"))
+                {
+                    Discard();
+                }
+                break;
+            case ItemType.Potion:
+                GUI.Box(new Rect(8 * scr.x, 5 * scr.y, 8 * scr.x, 3 * scr.y), selectedItem.Name + "\n" + selectedItem.Description +
+                    "\nValue: " + selectedItem.Value + "\nHeal: " + selectedItem.Heal + "\nAmount: " + selectedItem.Amount);
+                if (player.curHealth < player.maxHealth)
+                {
+                    if (GUI.Button(new Rect(15 * scr.x, 8.75f * scr.y, scr.x, 0.25f * scr.y), "Drink"))
+                    {
+                        player.curHealth += selectedItem.Heal;
+                        DepleteAmount();
+                    }
+                }
+
+                if (GUI.Button(new Rect(14 * scr.x, 8.75f * scr.y, scr.x, 0.25f * scr.y), "Discard"))
+                {
+                    Discard();
+                }
+                break;
+            case ItemType.Scroll:
+                GUI.Box(new Rect(8 * scr.x, 5 * scr.y, 8 * scr.x, 3 * scr.y), selectedItem.Name + "\n" + selectedItem.Description +
+                    "\nValue: " + selectedItem.Value + "\nAmount: " + selectedItem.Amount);
+
+                if (GUI.Button(new Rect(15 * scr.x, 8.75f * scr.y, scr.x, 0.25f * scr.y), "Use"))
+                {
+
+                    DepleteAmount();
+                }
+
+                if (GUI.Button(new Rect(14 * scr.x, 8.75f * scr.y, scr.x, 0.25f * scr.y), "Discard"))
+                {
+                    Discard();
+                }
+                break;
+            default:
+                break;
+        }
+    }
+    void DepleteAmount()
+    {
+        if (selectedItem.Amount > 1)
+        {
+            selectedItem.Amount--;
+        }
+        else
+        {
+            inv.Remove(selectedItem);
+            selectedItem = null;
+        }
+        return;
+
+    }
+    void Discard()
+    {
+        if (selectedItem.Type == ItemType.Weapon)
+        {
+            if (curWeapon != null && selectedItem.Mesh.name == curWeapon.name)
+            {
+                Destroy(curWeapon);
+            }
+
+        }
+        else if (selectedItem.Type == ItemType.Apparel)
+        {
+            if (curHelm != null && selectedItem.Mesh.name == curHelm.name)
+            {
+                Destroy(curHelm);
+            }
+        }
+
+        GameObject clone = Instantiate(selectedItem.Mesh, dropLocation.position, Quaternion.identity);
+        clone.AddComponent<Rigidbody>().useGravity = true; // attached rigidbody and gravity so it will fall to ground
+        if (clone.GetComponent<Collider>() == null)
+        {
+            clone.AddComponent<BoxCollider>();
+
+        }
+        DepleteAmount();
+    }
+    void EquipItem(GameObject item, int location)
+    {
+        if (item == null || selectedItem.Mesh.name != item.name)
+        {
+            if (GUI.Button(new Rect(15 * scr.x, 8.75f * scr.y, scr.x, 0.25F * scr.y), "Equip"))
+            {
+                if (item != null)
+                {
+                    Destroy(item);
+                }
+                //Equip the items into the location
+                item = Instantiate(selectedItem.Mesh, equippedLocations[location]);
+
+                if(selectedItem.Type == ItemType.Weapon)
+                {
+                    curWeapon = item;
+                }
+                else if(selectedItem.Type ==ItemType.Apparel)
+                {
+                    curHelm = item;
+                }
+
+                if (item.GetComponent<ItemHandler>() != null)
+                {
+                    item.GetComponent<ItemHandler>().enabled = false;
+                }
+                item.name = selectedItem.Mesh.name;
+            }
+            else
+            {
+                if (item == null && selectedItem.Mesh.name == item.name)
+                {
+                    if (GUI.Button(new Rect(15 * scr.x, 8.75f * scr.y, scr.x, 0.25F * scr.y), "UnEquip"))
+                    {
+
+                        Destroy(item);
+
+                    }
+                }
+            }
+        }
+
+    }
     private void OnGUI()
     {
-
+        
         if (showInv)
         {
             GUI.Box(new Rect(0, 0, Screen.width, Screen.height), "Inventory");
@@ -242,6 +452,7 @@ public class Inventory : MonoBehaviour
             {
                 GUI.DrawTexture(new Rect(11 * scr.x, 1.5f * scr.y, 2 * scr.x, 2 * scr.y), selectedItem.Icon);
             }
+            DisplayItem();
         }
 
     }

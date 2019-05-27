@@ -3768,6 +3768,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1761f8a30c675b4b9e84cd8014503f6, type: 3}
+--- !u!4 &495384712 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4012477570112893313, guid: d19c73646b52480479158f63aec18b01,
+    type: 3}
+  m_PrefabInstance: {fileID: 1998651864}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &519592997
 GameObject:
   m_ObjectHideFlags: 0
@@ -9805,10 +9811,13 @@ MonoBehaviour:
   scrollPos: {x: 0, y: 0}
   sortTypes: []
   selectedType: 
-  equippedLocations: []
-  dropLocation: {fileID: 0}
+  equippedLocations:
+  - {fileID: 495384712}
+  - {fileID: 1750388636}
+  dropLocation: {fileID: 495384712}
   curWeapon: {fileID: 0}
   curHelm: {fileID: 0}
+  player: {fileID: 114518808358965112}
 --- !u!1 &1407517684
 GameObject:
   m_ObjectHideFlags: 0
@@ -11939,6 +11948,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d70eaee89f433747a98c00915a20baa, type: 3}
+--- !u!4 &1750388636 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4012477570112893345, guid: d19c73646b52480479158f63aec18b01,
+    type: 3}
+  m_PrefabInstance: {fileID: 1998651864}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1763911813
 GameObject:
   m_ObjectHideFlags: 0
@@ -15041,7 +15056,7 @@ PrefabInstance:
     - target: {fileID: 3969261751392564803, guid: bd4f851bbe63f7244a5bd9283d4b9a5c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.0149999
+      value: 0.246
       objectReference: {fileID: 0}
     - target: {fileID: 3969261751392564803, guid: bd4f851bbe63f7244a5bd9283d4b9a5c,
         type: 3}
@@ -15087,6 +15102,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3969261751392564803, guid: bd4f851bbe63f7244a5bd9283d4b9a5c,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.47877
+      objectReference: {fileID: 0}
+    - target: {fileID: 3969261751392564803, guid: bd4f851bbe63f7244a5bd9283d4b9a5c,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.47877
+      objectReference: {fileID: 0}
+    - target: {fileID: 3969261751392564803, guid: bd4f851bbe63f7244a5bd9283d4b9a5c,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.47877
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bd4f851bbe63f7244a5bd9283d4b9a5c, type: 3}

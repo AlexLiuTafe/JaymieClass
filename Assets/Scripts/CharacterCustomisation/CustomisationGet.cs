@@ -19,6 +19,7 @@ public class CustomisationGet : MonoBehaviour {
     {
         //our character reference connected to the Skinned Mesh Renderer via finding the Mesh
         character = GameObject.FindGameObjectWithTag("PlayerMesh").GetComponent<SkinnedMeshRenderer>();
+
         //Run the function LoadTexture
         LoadTexture();
     }

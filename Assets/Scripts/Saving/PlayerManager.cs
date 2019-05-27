@@ -29,7 +29,7 @@ public class PlayerManager : MonoBehaviour
         gold = 0;
         exp = 0;
     }
-
+    #region SavePlayer and LoadPlayer
     public void SavePlayer()
     {
         savePos = transform.position;
@@ -50,7 +50,7 @@ public class PlayerManager : MonoBehaviour
 
         savePos = new Vector3(data.x, data.y, data.z);
         this.transform.position = savePos;
-
+        #endregion
 
     }
     void Update()
@@ -64,6 +64,7 @@ public class PlayerManager : MonoBehaviour
         _gold.text = gold.ToString();
         _exp.text = exp.ToString();
     }
+    #region Health
     void HealthManager()
     {
         //if health less than 0 and slider still enable = Dead and slider is disable
@@ -79,4 +80,5 @@ public class PlayerManager : MonoBehaviour
             healthFill.enabled = true;
         }
     }
+    #endregion
 }
