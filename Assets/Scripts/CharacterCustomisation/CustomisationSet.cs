@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -64,6 +63,7 @@ public class CustomisationSet : MonoBehaviour
     public GameObject[] charismaButtons;
     public Text className;
     public Text pointText;
+    public Text[] statsTexts = new Text[6];
     #endregion
 
     #region Start
@@ -71,17 +71,19 @@ public class CustomisationSet : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+
         //TEST FOR NAME
         if (playerName != null)
         {
             playerNameInputField.text = playerName;
         }
 
-        pointText.text = "Points" + points.ToString(); //TESTING
-        className.text = selectedClass[0]; //TESTING
+
 
         statArray = new string[] { "Strength", "Dexterity", "Constitution", "Wisdom", "Intelligence", "Charisma" };
         selectedClass = new string[] { "Paladin", "Priest", "Rogue", "Ranger", "Wizard" };
+
+
 
         //in start we need to set up the following
 
@@ -144,9 +146,21 @@ public class CustomisationSet : MonoBehaviour
         SetTexture("Clothes", clothesIndex = 0);
 
         //Set to Default Class
-        //ChooseClass(0); //FOR GUI
+        ChooseClass(0); //FOR GUI
+        className.text = selectedClass[0]; //FOR CANVAS
+
+        //Convert Int Points to String;
+        pointText.text = "Point" + ":" + Mathf.Round(points).ToString();
+
+        for (int i = 0; i < statsTexts.Length; i++)
+        {
+
+            statsTexts[i].text = statArray[i] + ":" + (Mathf.Round(tempStats[i] + stats[i]).ToString());
+
+        }
+
         #region do this after making the function SetTexture
-        
+
         #endregion
     }
     #endregion
@@ -366,7 +380,7 @@ public class CustomisationSet : MonoBehaviour
     //    charName = GUI.TextField(new Rect(0.25f * scrW, scrH + i * (0.5f * scrH), 2 * scrW, 0.5f * scrH), charName, 16);
     //    i++;
     //    #region Save and play button  
-    //    if (GUI.Button(new Rect(0.25f * scrW, scrH + i * (0.5f * scrH), 2 * scrW, 0.5f * scrH), "Save and Play")) 
+    //    if (GUI.Button(new Rect(0.25f * scrW, scrH + i * (0.5f * scrH), 2 * scrW, 0.5f * scrH), "Save and Play"))
     //    {
     //        Save();
     //        SceneManager.LoadScene(1);
@@ -406,7 +420,7 @@ public class CustomisationSet : MonoBehaviour
     //                tempStats[s]++;
     //            }
     //        }
-    //        GUI.Box(new Rect(3.75f * scrW, 2.5f * scrH + s * (0.5f * scrH), 2 * scrW, 0.5f * scrH), statArray[s] + ":" + (tempStats[s]+stats[s]));
+    //        GUI.Box(new Rect(3.75f * scrW, 2.5f * scrH + s * (0.5f * scrH), 2 * scrW, 0.5f * scrH), statArray[s] + ":" + (tempStats[s] + stats[s]));
     //        if (points < 10 && tempStats[s] > 0)
     //        {
     //            if (GUI.Button(new Rect(3.25f * scrW, 2.5f * scrH + s * (0.5f * scrH), 0.5f * scrW, 0.5f * scrH), "-"))
@@ -427,7 +441,7 @@ public class CustomisationSet : MonoBehaviour
                 stats[0] = 15;
                 stats[1] = 5;
                 stats[2] = 12;
-                stats[3] = 6;
+                stats[3] = 4;
                 stats[4] = 6;
                 stats[5] = 5;
                 charclass = characterClass.Paladin;
@@ -473,73 +487,82 @@ public class CustomisationSet : MonoBehaviour
     }
 
     #endregion
-    #region CANVAS FUNCTIONS
-    public void SkinButton()
+    #region CANVAS UI REGION
+    #region Character Textures
+    #region Skin Buttons
+    public void SkinButtonLeft()
     {
-        if (skinButtons[0])
-        {
-            SetTexture("Skin", -1);
-        }
-        else if (skinButtons[1])
-        {
-            SetTexture("Skin", 1);
-        }
+        SetTexture("Skin", -1);
+
     }
-    public void HairButton()
+    public void SkinButtonRight()
     {
-        if (skinButtons[0])
-        {
-            SetTexture("Hair", -1);
-        }
-        else if (skinButtons[1])
-        {
-            SetTexture("Hair", 1);
-        }
+
+        SetTexture("Skin", 1);
     }
-    public void MouthButton()
+    #endregion
+    #region Hair Buttons
+    public void HairButtonLeft()
     {
-        if (skinButtons[0])
-        {
-            SetTexture("Mouth", -1);
-        }
-        else if (skinButtons[1])
-        {
-            SetTexture("Mouth", 1);
-        }
+        SetTexture("Hair", -1);
+
     }
-    public void EyesButton()
+    public void HairButtonRight()
     {
-        if (skinButtons[0])
-        {
-            SetTexture("Eyes", -1);
-        }
-        else if (skinButtons[1])
-        {
-            SetTexture("Eyes", 1);
-        }
+
+        SetTexture("Hair", 1);
+
     }
-    public void ArmourButton()
+    #endregion
+    #region Mouth Buttons
+    public void MouthButtonLeft()
     {
-        if (skinButtons[0])
-        {
-            SetTexture("Armour", -1);
-        }
-        else if (skinButtons[1])
-        {
-            SetTexture("Armour", 1);
-        }
+        SetTexture("Mouth", -1);
+
     }
-    public void ClothesButton()
+    public void MouthButtonRight()
     {
-        if (skinButtons[0])
-        {
-            SetTexture("Clothes", -1);
-        }
-        else if (skinButtons[1])
-        {
-            SetTexture("Clothes", 1);
-        }
+
+        SetTexture("Mouth", 1);
+
     }
+    #endregion
+    #region Eyes Buttons
+    public void EyesButtonLeft()
+    {
+        SetTexture("Eyes", -1);
+
+    }
+    public void EyesButtonRight()
+    {
+        SetTexture("Eyes", 1);
+    }
+    #endregion
+    #region Armour Buttons
+    public void ArmourButtonLeft()
+    {
+        SetTexture("Armour", -1);
+    }
+    public void ArmourButtonRight()
+    {
+
+        SetTexture("Armour", 1);
+    }
+    #endregion
+    #region Clothes Buttons
+    public void ClothesButtonLeft()
+    {
+
+        SetTexture("Clothes", -1);
+
+    }
+    public void ClothesButtonRight()
+    {
+
+        SetTexture("Clothes", 1);
+
+    }
+    #endregion
     public void ResetButton()
     {
         SetTexture("Skin", skinIndex = 0);
@@ -568,29 +591,348 @@ public class CustomisationSet : MonoBehaviour
     {
         playerName = newName;
     }
-    public void SelectClass()
+
+    #endregion
+
+    #region Character Class and Stats
+    public void SelectClassLeft()
     {
-        if (classButtons[0])
+
+        selectedIndex--;
+
+        if (selectedIndex < 0)
         {
-            selectedIndex--;
-            if (selectedIndex < 0)
-            {
-                selectedIndex = selectedClass.Length - 1;
-            }
-            ChooseClass(selectedIndex);
+            selectedIndex = selectedClass.Length - 1;
+
         }
-        if(classButtons[1])
+        ChooseClass(selectedIndex);
+        className.text = selectedClass[selectedIndex];
+
+        for (int i = 0; i < statsTexts.Length; i++)
         {
-            selectedIndex++;
-            if (selectedIndex > selectedClass.Length -1)
-            {
-                selectedIndex = 0;
-            }
-            ChooseClass(selectedIndex);
+            statsTexts[i].text = statArray[i] + ":" + (Mathf.Round(tempStats[i] + stats[i]).ToString());
+        }
+    }
+    public void SelectClassRight()
+    {
+
+        selectedIndex++;
+
+        if (selectedIndex > selectedClass.Length - 1)
+        {
+            selectedIndex = 0;
+        }
+        ChooseClass(selectedIndex);
+        className.text = selectedClass[selectedIndex];
+
+        for (int i = 0; i < statsTexts.Length; i++)
+        {
+            statsTexts[i].text = statArray[i] + ":" + (Mathf.Round(tempStats[i] + stats[i]).ToString());
         }
     }
     #endregion
+    #region Add and Decrease Stats Buttons
+    #region Strength
+    public void StrengthPointLeft()
+    {
+        int i = 0;
+        if (points < 10 && tempStats[i] > 0)
+        {
+
+            points++;
+            tempStats[i]--;
+
+        }
+        statsTexts[i].text = statArray[i] + ":" + (Mathf.Round(tempStats[i] + stats[i]).ToString());
+        pointText.text = "Point" + ":" + Mathf.Round(points).ToString();
+    }
+    public void StrengthPointRight()
+    {
+        int i = 0;
+        if (points > 0)
+
+        {
+            strengthButtons[1].SetActive(true);
+            points--;
+            tempStats[i]++;
+        }
+        else
+        {
+
+        }
+
+        statsTexts[i].text = statArray[i] + ":" + (Mathf.Round(tempStats[i] + stats[i]).ToString());
+        pointText.text = "Point" + ":" + Mathf.Round(points).ToString();
+    }
+    #endregion
+    #region Dexterity
+    public void DexterityPointLeft()
+    {
+        int i = 1;
+        if (points < 10 && tempStats[i] > 0)
+        {
+            points++;
+            tempStats[i]--;
+
+        }
+        statsTexts[i].text = statArray[i] + ":" + (Mathf.Round(tempStats[i] + stats[i]).ToString());
+        pointText.text = "Point" + ":" + Mathf.Round(points).ToString();
+    }
+    public void DexterityPointRight()
+    {
+        int i = 1;
+        if (points > 0)
+        {
+            points--;
+            tempStats[i]++;
+
+            statsTexts[i].text = statArray[i] + ":" + (Mathf.Round(tempStats[i] + stats[i]).ToString());
+            pointText.text = "Point" + ":" + Mathf.Round(points).ToString();
+        }
+    }
+    #endregion
+    #region Constitution
+    public void ConstitutionPointLeft()
+    {
+        int i = 2;
+
+        if (points < 10 && tempStats[i] > 0)
+        {
+            points++;
+            tempStats[i]--;
+
+        }
+        statsTexts[i].text = statArray[i] + ":" + (Mathf.Round(tempStats[i] + stats[i]).ToString());
+        pointText.text = "Point" + ":" + Mathf.Round(points).ToString();
+    }
+    public void ConstitutionPointRight()
+    {
+        int i = 2;
+        if (points > 0)
+        {
+            points--;
+            tempStats[i]++;
+
+            statsTexts[i].text = statArray[i] + ":" + (Mathf.Round(tempStats[i] + stats[i]).ToString());
+            pointText.text = "Point" + ":" + Mathf.Round(points).ToString();
+        }
+    }
+    #endregion
+    #region Wisdom
+    public void WisdomPointLeft()
+    {
+        int i = 3;
+        if (points < 10 && tempStats[i] > 0)
+        {
+            points++;
+            tempStats[i]--;
+
+        }
+        statsTexts[i].text = statArray[i] + ":" + (Mathf.Round(tempStats[i] + stats[i]).ToString());
+        pointText.text = "Point" + ":" + Mathf.Round(points).ToString();
+    }
+    public void WisdomPointRight()
+    {
+        int i = 3;
+        if (points > 0)
+        {
+            points--;
+            tempStats[i]++;
+
+            statsTexts[i].text = statArray[i] + ":" + (Mathf.Round(tempStats[i] + stats[i]).ToString());
+            pointText.text = "Point" + ":" + Mathf.Round(points).ToString();
+        }
+    }
+    #endregion
+    #region Intelligence
+    public void IntelligencePointLeft()
+    {
+        int i = 4;
+        if (points < 10 && tempStats[i] > 0)
+        {
+            points++;
+            tempStats[i]--;
+
+        }
+        statsTexts[i].text = statArray[i] + ":" + (Mathf.Round(tempStats[i] + stats[i]).ToString());
+        pointText.text = "Point" + ":" + Mathf.Round(points).ToString();
+    }
+    public void IntelligencePointRight()
+    {
+        int i = 4;
+        if (points > 0)
+        {
+            points--;
+            tempStats[i]++;
+
+            statsTexts[i].text = statArray[i] + ":" + (Mathf.Round(tempStats[i] + stats[i]).ToString());
+            pointText.text = "Point" + ":" + Mathf.Round(points).ToString();
+        }
+    }
+    #endregion
+    #region Charisma
+    public void CharismaPointLeft()
+    {
+        int i = 5;
+
+        points++;
+        tempStats[i]--;
+
+
+        statsTexts[i].text = statArray[i] + ":" + (Mathf.Round(tempStats[i] + stats[i]).ToString());
+        pointText.text = "Point" + ":" + Mathf.Round(points).ToString();
+    }
+    public void CharismaPointRight()
+    {
+        int i = 5;
+
+        points--;
+        tempStats[i]++;
+
+        statsTexts[i].text = statArray[i] + ":" + (Mathf.Round(tempStats[i] + stats[i]).ToString());
+        pointText.text = "Point" + ":" + Mathf.Round(points).ToString();
+
+    }
+    #endregion
+    #endregion
+    #endregion
+    private void Update()
+    {
+        #region Stats Update
+        #region Strength
+        if (points < 10 && tempStats[0] > 0)
+        {
+           strengthButtons[0].SetActive(true);
+
+        }
+        else if (tempStats[0] == tempStats[4])
+        {
+            strengthButtons[0].SetActive(false);
+        }
+
+        if (points == 0)
+        {
+            strengthButtons[1].SetActive(false);
+        }
+        else if (points > 0)
+        {
+            strengthButtons[1].SetActive(true);
+
+        }
+        #endregion
+        #region Dexterity
+        if (points < 10 && tempStats[1] > 0)
+        {
+            dexterityButtons[0].SetActive(true);
+
+        }
+        else if (tempStats[1] == tempStats[4])
+        {
+            dexterityButtons[0].SetActive(false);
+        }
+
+        if (points == 0)
+        {
+            dexterityButtons[1].SetActive(false);
+        }
+        else if (points > 0)
+        {
+            dexterityButtons[1].SetActive(true);
+
+        }
+        #endregion
+        #region Constitution
+        if (points < 10 && tempStats[2] > 0)
+        {
+           constitutionButtons[0].SetActive(true);
+
+        }
+        else if (tempStats[2] == tempStats[4])
+        {
+            constitutionButtons[0].SetActive(false);
+        }
+
+        if (points == 0)
+        {
+            constitutionButtons[1].SetActive(false);
+        }
+        else if (points > 0)
+        {
+            constitutionButtons[1].SetActive(true);
+
+        }
+        #endregion
+        #region Wisdom
+        if (points < 10 && tempStats[3] > 0)
+        {
+            wisdomButtons[0].SetActive(true);
+
+        }
+        else if (tempStats[3] == tempStats[4])
+        {
+            wisdomButtons[0].SetActive(false);
+        }
+
+        if (points == 0)
+        {
+            wisdomButtons[1].SetActive(false);
+        }
+        else if (points > 0)
+        {
+            wisdomButtons[1].SetActive(true);
+
+        }
+        #endregion
+        #region Intelligence
+        if (points < 10 && tempStats[4] > 0)
+        {
+            intelligenceButtons[0].SetActive(true);
+
+        }
+        else if (tempStats[4] == tempStats[4])
+        {
+            intelligenceButtons[0].SetActive(false);
+        }
+
+        if (points == 0)
+        {
+            intelligenceButtons[1].SetActive(false);
+        }
+        else if (points > 0)
+        {
+            intelligenceButtons[1].SetActive(true);
+
+        }
+        #endregion
+        #region Charisma
+        if (points < 10 && tempStats[5] > 0)
+        {
+            charismaButtons[0].SetActive(true);
+            
+        }
+        else if( tempStats [5] == tempStats [5])
+        {
+            charismaButtons[0].SetActive(false);
+        }
+        
+        if (points == 0)
+        {
+            charismaButtons[1].SetActive(false);
+        }
+        else if (points > 0)
+        {
+            charismaButtons[1].SetActive(true);
+
+        }
+        #endregion
+
+        #endregion
+    }
+
 }
+
+
+
 
 public enum characterClass
 {
