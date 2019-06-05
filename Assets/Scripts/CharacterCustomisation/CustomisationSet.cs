@@ -636,31 +636,18 @@ public class CustomisationSet : MonoBehaviour
     public void StrengthPointLeft()
     {
         int i = 0;
-        if (points < 10 && tempStats[i] > 0)
-        {
 
-            points++;
-            tempStats[i]--;
-
-        }
+        points++;
+        tempStats[i]--;
         statsTexts[i].text = statArray[i] + ":" + (Mathf.Round(tempStats[i] + stats[i]).ToString());
         pointText.text = "Point" + ":" + Mathf.Round(points).ToString();
     }
     public void StrengthPointRight()
     {
         int i = 0;
-        if (points > 0)
 
-        {
-            strengthButtons[1].SetActive(true);
-            points--;
-            tempStats[i]++;
-        }
-        else
-        {
-
-        }
-
+        points--;
+        tempStats[i]++;
         statsTexts[i].text = statArray[i] + ":" + (Mathf.Round(tempStats[i] + stats[i]).ToString());
         pointText.text = "Point" + ":" + Mathf.Round(points).ToString();
     }
@@ -669,26 +656,20 @@ public class CustomisationSet : MonoBehaviour
     public void DexterityPointLeft()
     {
         int i = 1;
-        if (points < 10 && tempStats[i] > 0)
-        {
+
             points++;
             tempStats[i]--;
-
-        }
         statsTexts[i].text = statArray[i] + ":" + (Mathf.Round(tempStats[i] + stats[i]).ToString());
         pointText.text = "Point" + ":" + Mathf.Round(points).ToString();
     }
     public void DexterityPointRight()
     {
         int i = 1;
-        if (points > 0)
-        {
+       
             points--;
             tempStats[i]++;
-
             statsTexts[i].text = statArray[i] + ":" + (Mathf.Round(tempStats[i] + stats[i]).ToString());
-            pointText.text = "Point" + ":" + Mathf.Round(points).ToString();
-        }
+            pointText.text = "Point" + ":" + Mathf.Round(points).ToString();       
     }
     #endregion
     #region Constitution
@@ -696,78 +677,60 @@ public class CustomisationSet : MonoBehaviour
     {
         int i = 2;
 
-        if (points < 10 && tempStats[i] > 0)
-        {
-            points++;
-            tempStats[i]--;
-
-        }
+        points++;
+        tempStats[i]--;
         statsTexts[i].text = statArray[i] + ":" + (Mathf.Round(tempStats[i] + stats[i]).ToString());
         pointText.text = "Point" + ":" + Mathf.Round(points).ToString();
     }
     public void ConstitutionPointRight()
     {
         int i = 2;
-        if (points > 0)
-        {
-            points--;
-            tempStats[i]++;
 
-            statsTexts[i].text = statArray[i] + ":" + (Mathf.Round(tempStats[i] + stats[i]).ToString());
-            pointText.text = "Point" + ":" + Mathf.Round(points).ToString();
-        }
+        points--;
+        tempStats[i]++;
+        statsTexts[i].text = statArray[i] + ":" + (Mathf.Round(tempStats[i] + stats[i]).ToString());
+        pointText.text = "Point" + ":" + Mathf.Round(points).ToString();
     }
     #endregion
     #region Wisdom
     public void WisdomPointLeft()
     {
         int i = 3;
-        if (points < 10 && tempStats[i] > 0)
-        {
-            points++;
-            tempStats[i]--;
 
-        }
+        points++;
+        tempStats[i]--;
         statsTexts[i].text = statArray[i] + ":" + (Mathf.Round(tempStats[i] + stats[i]).ToString());
         pointText.text = "Point" + ":" + Mathf.Round(points).ToString();
     }
     public void WisdomPointRight()
     {
         int i = 3;
-        if (points > 0)
-        {
-            points--;
-            tempStats[i]++;
 
-            statsTexts[i].text = statArray[i] + ":" + (Mathf.Round(tempStats[i] + stats[i]).ToString());
-            pointText.text = "Point" + ":" + Mathf.Round(points).ToString();
-        }
+        points--;
+        tempStats[i]++;
+        statsTexts[i].text = statArray[i] + ":" + (Mathf.Round(tempStats[i] + stats[i]).ToString());
+        pointText.text = "Point" + ":" + Mathf.Round(points).ToString();
     }
     #endregion
     #region Intelligence
     public void IntelligencePointLeft()
     {
         int i = 4;
-        if (points < 10 && tempStats[i] > 0)
-        {
-            points++;
-            tempStats[i]--;
 
-        }
+        points++;
+        tempStats[i]--;
         statsTexts[i].text = statArray[i] + ":" + (Mathf.Round(tempStats[i] + stats[i]).ToString());
         pointText.text = "Point" + ":" + Mathf.Round(points).ToString();
     }
     public void IntelligencePointRight()
     {
         int i = 4;
-        if (points > 0)
-        {
-            points--;
-            tempStats[i]++;
 
-            statsTexts[i].text = statArray[i] + ":" + (Mathf.Round(tempStats[i] + stats[i]).ToString());
-            pointText.text = "Point" + ":" + Mathf.Round(points).ToString();
-        }
+        points--;
+        tempStats[i]++;
+
+        statsTexts[i].text = statArray[i] + ":" + (Mathf.Round(tempStats[i] + stats[i]).ToString());
+        pointText.text = "Point" + ":" + Mathf.Round(points).ToString();
     }
     #endregion
     #region Charisma
@@ -777,8 +740,6 @@ public class CustomisationSet : MonoBehaviour
 
         points++;
         tempStats[i]--;
-
-
         statsTexts[i].text = statArray[i] + ":" + (Mathf.Round(tempStats[i] + stats[i]).ToString());
         pointText.text = "Point" + ":" + Mathf.Round(points).ToString();
     }
@@ -788,7 +749,6 @@ public class CustomisationSet : MonoBehaviour
 
         points--;
         tempStats[i]++;
-
         statsTexts[i].text = statArray[i] + ":" + (Mathf.Round(tempStats[i] + stats[i]).ToString());
         pointText.text = "Point" + ":" + Mathf.Round(points).ToString();
 
@@ -802,10 +762,10 @@ public class CustomisationSet : MonoBehaviour
         #region Strength
         if (points < 10 && tempStats[0] > 0)
         {
-           strengthButtons[0].SetActive(true);
+            strengthButtons[0].SetActive(true);
 
         }
-        else if (tempStats[0] == tempStats[4])
+        else if (tempStats[0] == tempStats[0])
         {
             strengthButtons[0].SetActive(false);
         }
@@ -826,7 +786,7 @@ public class CustomisationSet : MonoBehaviour
             dexterityButtons[0].SetActive(true);
 
         }
-        else if (tempStats[1] == tempStats[4])
+        else if (tempStats[1] == tempStats[1])
         {
             dexterityButtons[0].SetActive(false);
         }
@@ -844,10 +804,10 @@ public class CustomisationSet : MonoBehaviour
         #region Constitution
         if (points < 10 && tempStats[2] > 0)
         {
-           constitutionButtons[0].SetActive(true);
+            constitutionButtons[0].SetActive(true);
 
         }
-        else if (tempStats[2] == tempStats[4])
+        else if (tempStats[2] == tempStats[2])
         {
             constitutionButtons[0].SetActive(false);
         }
@@ -868,7 +828,7 @@ public class CustomisationSet : MonoBehaviour
             wisdomButtons[0].SetActive(true);
 
         }
-        else if (tempStats[3] == tempStats[4])
+        else if (tempStats[3] == tempStats[3])
         {
             wisdomButtons[0].SetActive(false);
         }
@@ -908,13 +868,13 @@ public class CustomisationSet : MonoBehaviour
         if (points < 10 && tempStats[5] > 0)
         {
             charismaButtons[0].SetActive(true);
-            
+
         }
-        else if( tempStats [5] == tempStats [5])
+        else if (tempStats[5] == tempStats[5])
         {
             charismaButtons[0].SetActive(false);
         }
-        
+
         if (points == 0)
         {
             charismaButtons[1].SetActive(false);
