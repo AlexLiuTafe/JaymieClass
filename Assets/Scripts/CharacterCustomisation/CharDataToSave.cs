@@ -19,8 +19,8 @@ public class CharDataToSave
         armour = custom.armourIndex;
         clothes = custom.clothesIndex;
 
-        characterName = custom.charName;
-
+        characterName = custom.charName; //FOR GUI
+        //characterName = custom.playerName.text; //FOR CANVAS
     }
 }
 

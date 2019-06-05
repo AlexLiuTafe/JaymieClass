@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.UI;
 //you will need to change Scenes
 public class CustomisationGet : MonoBehaviour {
 
@@ -13,15 +14,16 @@ public class CustomisationGet : MonoBehaviour {
     public int skin;
     public int hair, mouth, eyes, armour, clothes;
     public string characterName;
+    public Text playerNameText;
 
     #region Start
     private void Start()
     {
         //our character reference connected to the Skinned Mesh Renderer via finding the Mesh
         character = GameObject.FindGameObjectWithTag("PlayerMesh").GetComponent<SkinnedMeshRenderer>();
-
         //Run the function LoadTexture
         LoadTexture();
+    
     }
 
     #endregion
@@ -47,8 +49,8 @@ public class CustomisationGet : MonoBehaviour {
             SetTexture("Clothes", data.clothes);
             clothes = data.clothes;
             //grab the gameObject in scene that is our character and set its Object name to the Characters name
-            characterName = data.characterName;
-
+            characterName = data.characterName; // FOR GUI
+            //playerName = data.characterName.ToString; //FOR CANVAS
 
         }
         else//if it doesnt then load the CustomSet level
@@ -63,12 +65,7 @@ public class CustomisationGet : MonoBehaviour {
             characterName = customSet.charName;
 
         }
-        
-        
-        
-        
-        
-        
+            
     }
 
     #endregion
