@@ -47,20 +47,8 @@ public class CustomisationSet : MonoBehaviour
 
     public int selectedIndex = 0;
 
-    [Header("Character Avatar Buttons")]
-    public GameObject[] skinButtons;
-    public GameObject[] hairButtons;
-    public GameObject[] mouthButtons;
-    public GameObject[] eyesButtons;
-    public GameObject[] armourButtons;
-    public GameObject[] clothesButtons;
-    public GameObject resetButton;
-    public GameObject randomButton;
-    public GameObject playButton; 
-
     [Header("Character Class and Stats")]
     public string[] selectedClass = new string[5];
-    public GameObject[] classButtons;
     public GameObject[] strengthButtons;
     public GameObject[] dexterityButtons;
     public GameObject[] constitutionButtons;
@@ -73,6 +61,7 @@ public class CustomisationSet : MonoBehaviour
 
     [Header("Character Race")]
     public string[] selectedRace = new string[5];
+    public Text raceName;
     public int health;
     public int mana;
     #endregion
@@ -151,6 +140,10 @@ public class CustomisationSet : MonoBehaviour
         //Set to Default Class
         ChooseClass(0); //FOR GUI
         className.text = selectedClass[0]; //FOR CANVAS
+
+        //Set to Default Race
+        ChooseRace(0);
+        raceName.text = selectedRace[0];//FOR CANVAS
 
         //Convert Int Points to String;
         pointText.text = "Point" + ":" + Mathf.Round(points).ToString();
@@ -625,7 +618,7 @@ public class CustomisationSet : MonoBehaviour
 
     #endregion
 
-    #region CHARACTER CLASS AND STATS
+    #region SELECT CLASS
     public void SelectClassLeft()
     {
 
@@ -662,7 +655,35 @@ public class CustomisationSet : MonoBehaviour
         }
     }
     #endregion
-    #region Add and Decrease Stats Buttons
+    #region SELECT RACE
+    public void SelectRaceLeft()
+    {
+
+        selectedIndex--;
+
+        if (selectedIndex < 0)
+        {
+            selectedIndex = selectedRace.Length - 1;
+
+        }
+        ChooseRace(selectedIndex);
+        raceName.text = selectedRace[selectedIndex];
+
+    }
+    public void SelectRaceRight()
+    {
+        selectedIndex++;
+
+        if (selectedIndex > selectedRace.Length - 1)
+        {
+            selectedIndex = 0;
+        }
+        ChooseRace(selectedIndex);
+        raceName.text = selectedRace[selectedIndex];
+
+    }
+    #endregion
+    #region ADD AND DECREASE STATS
     #region Strength
     public void StrengthPointLeft()
     {

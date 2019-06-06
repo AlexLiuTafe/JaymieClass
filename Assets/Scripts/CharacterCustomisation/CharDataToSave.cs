@@ -11,6 +11,9 @@ public class CharDataToSave
     public int strength, dexterity, constitution, wisdom, intelligence, charisma;
     public string characterName;
     public string charClass;
+    public string charRace;
+    public int health;
+    public int mana;
     
     public CharDataToSave(CustomisationSet custom)
     {
@@ -30,6 +33,11 @@ public class CharDataToSave
         charisma = custom.stats[5] + custom.tempStats[5];
         //Char Class
         charClass = custom.className.text;
+        //Char Race
+        charRace = custom.raceName.text;
+        health = custom.health;
+        mana = custom.mana;
+        //charRace = custom
         //characterName = custom.charName; //FOR GUI
         characterName = custom.charName; //FOR CANVAS
     }

@@ -20,7 +20,15 @@ public class CustomisationGet : MonoBehaviour {
     [Header("Stats")]
     public int strength;
     public int dexterity, constitution, wisdom, intelligence, charisma;
-    
+    [Header("Race")]
+    public Text raceNameText;
+    public Text healthText;
+    public Text manaText;
+    public string charRace;
+    public int health;
+    public int mana;
+    private int totalHealth;
+    private int totalMana;
     #region Start
     private void Start()
     {
@@ -31,10 +39,14 @@ public class CustomisationGet : MonoBehaviour {
         
         //Run the function LoadTexture
         LoadTexture();
+        //Stats Load UP
         playerNameText.text = characterName;//Load character name
         charClassText.text = charClass;//Load character class
-        
-
+        raceNameText.text = charRace;//Load character race
+        totalHealth = health + (3 * constitution);//Adding Constitution will effect totalHealth
+        totalMana = mana + (2 * intelligence);//Adding Intellingence will effect totalMana
+        healthText.text = "HP" + ":  " + Mathf.Round(totalHealth).ToString() ;
+        manaText.text = "MP" + ":  " + Mathf.Round(totalMana).ToString();
     }
 
     #endregion
@@ -71,6 +83,11 @@ public class CustomisationGet : MonoBehaviour {
 
             //Char Class
             charClass = data.charClass;
+            //Char Race
+            charRace = data.charRace;
+            health = data.health;
+            mana = data.mana;
+
             //grab the gameObject in scene that is our character and set its Object name to the Characters name
             characterName = data.characterName; // FOR GUI
             //playerName = data.characterName.ToString; //FOR CANVAS
@@ -86,6 +103,7 @@ public class CustomisationGet : MonoBehaviour {
             SetTexture("Clothes", customSet.clothesIndex = 0);
             //grab the gameObject in scene that is our character and set its Object name to the Characters name
             characterName = customSet.charName; //set name to default
+
             
 
         }
@@ -143,4 +161,12 @@ public class CustomisationGet : MonoBehaviour {
     }
 
     #endregion
+    private void Update()
+    {
+        //FOR CHECKING PURPOSES
+        totalHealth = health + (3 * constitution);//Adding Constitution will effect totalHealth
+        totalMana = mana + (2 * intelligence);//Adding Intellingence will effect totalMana
+        healthText.text = "HP"+":  " + Mathf.Round(totalHealth).ToString();
+        manaText.text = "MP"+":  "  + Mathf.Round(totalMana).ToString();
+    }
 }
