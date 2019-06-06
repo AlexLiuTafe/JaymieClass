@@ -5,13 +5,15 @@ using System.Collections;
 public class CheckPoint : MonoBehaviour 
 {
     #region Variables
-    //[Header("Check Point Elements")]
+    
     [Header("Check Point Elements")]
     //position for our currentCheck
     public Vector3 curCheckPoint;
-    //[Header("Character Health")]
-    public PlayerManager player;
-    //character Health script that holds the players health
+    private Transform checkPoint;
+    private Vector3 revivePoint;
+    [Header("Character Health")]
+    public PlayerManager player;//character Health script that holds the players health
+
     #endregion
     #region Start
     private void Start()
@@ -19,12 +21,9 @@ public class CheckPoint : MonoBehaviour
 
         //Reference to the character health script component attached to our player
         player = GetComponent<PlayerManager>();
+        checkPoint = GameObject.FindGameObjectWithTag("CheckPoint").GetComponent<Transform>();
+        revivePoint = new Vector3(checkPoint.position.x, checkPoint.position.y, checkPoint.position.z);
         player.curHealth = player.maxHealth;
-        
-
-
-
-
 
         #region Check if we have Key
         //if we have a save key called SpawnPoint
@@ -35,30 +34,27 @@ public class CheckPoint : MonoBehaviour
     }
     #endregion
     #region Update
-    private void Update()
-    {
-        //if our characters health is less than or equal to 0
-        if (player.curHealth <= 0)
-        {
-            //our transform.position is equal to that of the checkpoint or float x,y,z
-            transform.position = curCheckPoint;
+    //private void Update()
+    //{
+    //    //if our characters health is less than or equal to 0
+    //    if (player.curHealth <= 0)
+    //    {
+    //        //our transform.position is equal to that of the checkpoint or float x,y,z
+    //        transform.position = curCheckPoint;
 
-            //our characters health is equal to full health
-            player.curHealth = player.maxHealth;
+    //        //character is alive
+    //        if (player.curHealth >= 0)
+    //        {
+    //            //characters controller is active	
+    //            CharacterController charC = GetComponent<CharacterController>();
+    //            charC.enabled = true;
 
-            //character is alive
-            if (player.curHealth >= 0)
-            {
-                //characters controller is active	
-                CharacterController charC = GetComponent<CharacterController>();
-                charC.enabled = true;
-
-            }
+    //        }
          
             
-        }
+    //    }
         
-    }
+    //}
     #endregion
     #region OnTriggerEnter
     
@@ -72,8 +68,6 @@ public class CheckPoint : MonoBehaviour
             //save our SpawnPoint as the name of the check point or float x, y, z
             PlayerManager player = GetComponent<PlayerManager>();
             player.SavePlayer();
-
-            
         }
     }
 

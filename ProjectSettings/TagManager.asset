@@ -8,6 +8,7 @@ TagManager:
   - Item
   - CheckPoint
   - PlayerMesh
+  - CheckPoint2
   layers:
   - Default
   - TransparentFX

@@ -43,9 +43,9 @@ public class CustomisationSet : MonoBehaviour
     public int[] tempStats = new int[6];
     public int[] stats = new int[6];
     public string[] statArray = new string[6];
-    public string[] selectedClass = new string[5];
-    public int selectedIndex = 0;
     public int points = 10;
+
+    public int selectedIndex = 0;
 
     [Header("Character Avatar Buttons")]
     public GameObject[] skinButtons;
@@ -59,6 +59,7 @@ public class CustomisationSet : MonoBehaviour
     public GameObject playButton; 
 
     [Header("Character Class and Stats")]
+    public string[] selectedClass = new string[5];
     public GameObject[] classButtons;
     public GameObject[] strengthButtons;
     public GameObject[] dexterityButtons;
@@ -69,6 +70,11 @@ public class CustomisationSet : MonoBehaviour
     public Text className;
     public Text pointText;
     public Text[] statsTexts = new Text[6];
+
+    [Header("Character Race")]
+    public string[] selectedRace = new string[5];
+    public int health;
+    public int mana;
     #endregion
 
     #region Start
@@ -79,7 +85,8 @@ public class CustomisationSet : MonoBehaviour
 
         statArray = new string[] { "Strength", "Dexterity", "Constitution", "Wisdom", "Intelligence", "Charisma" };
         selectedClass = new string[] { "Paladin", "Priest", "Rogue", "Ranger", "Wizard" };
-
+        selectedRace = new string[] { "Human", "Dragonborn", "Gnome", "Elf", "Dwarf" };
+    
         
         //in start we need to set up the following
 
@@ -470,6 +477,38 @@ public class CustomisationSet : MonoBehaviour
                 break;
         }
     }
+    void ChooseRace(int raceName)
+    {
+        switch (raceName)
+        {
+            case 0:
+                health = 110;
+                mana = 65;
+                charRace = characterRace.Human;
+                break;
+            case 1:
+                health = 90;
+                mana = 90;
+                charRace = characterRace.Dragonborn;
+                break;
+            case 2:
+                health = 150;
+                mana = 30;
+                charRace = characterRace.Gnome;
+                break;
+            case 3:
+                health = 50;
+                mana = 100;
+                charRace = characterRace.Elf;
+                break;
+            case 4:
+                health = 110;
+                mana = 50;
+                charRace = characterRace.Dwarf;
+                break;
+
+        }
+    }
 
     #endregion
     #region *CANVAS UI REGION*
@@ -586,7 +625,7 @@ public class CustomisationSet : MonoBehaviour
 
     #endregion
 
-    #region Character Class and Stats
+    #region CHARACTER CLASS AND STATS
     public void SelectClassLeft()
     {
 
@@ -750,7 +789,7 @@ public class CustomisationSet : MonoBehaviour
     #endregion
     private void Update()
     {
-        #region Stats Update
+       
         #region Strength
         if (points < 10 && tempStats[0] > 0)
         {
@@ -878,7 +917,7 @@ public class CustomisationSet : MonoBehaviour
         }
         #endregion
        
-        #endregion
+       
     }
 
 }
@@ -896,13 +935,9 @@ public enum characterClass
 }
 public enum characterRace
 {
-    Dragonborn,
-    Dwarf,
-    Elf,
-    Gnome,
-    Half_Elf,
-    Half_Orc,
-    Halfling,
     Human,
-    Tiefling
+    Dragonborn,
+    Gnome,
+    Elf,
+    Dwarf,
 }

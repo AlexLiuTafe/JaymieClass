@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerManager : MonoBehaviour
 {
+    [Header("Character Status")]
     public int level;
     public new string name;
     public float maxHealth, maxMana, maxStam;
@@ -15,14 +16,15 @@ public class PlayerManager : MonoBehaviour
 
 
 
-    public CheckPoint checkPoint;
     public Vector3 savePos;
     public float x, y, z;
 
+    [Header("UI")]
     public static int gold;
     public static int exp;
     public Text _gold;
     public Text _exp;
+
 
     public void Start()
     {
@@ -49,10 +51,12 @@ public class PlayerManager : MonoBehaviour
         curStam = data.curStam;
 
         savePos = new Vector3(data.x, data.y, data.z);
-        this.transform.position = savePos;
-        #endregion
+        transform.position = savePos;
 
+
+        #endregion
     }
+
     void Update()
     {
         // Clamp01 is maximum and minimum value (ex.between 0 and 1)
@@ -70,14 +74,17 @@ public class PlayerManager : MonoBehaviour
         //if health less than 0 and slider still enable = Dead and slider is disable
         if (curHealth <= 0 && healthFill.enabled)
         {
+            
             Debug.Log("Dead");
             healthFill.enabled = false;
         }
         //else if is dead and health more than 0 = revive and enable slider
         else if (!healthFill.enabled && curHealth > 0) // ! = NOT
         {
+            
             Debug.Log("Revived");
             healthFill.enabled = true;
+
         }
     }
     #endregion
