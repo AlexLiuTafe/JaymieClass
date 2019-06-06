@@ -16,22 +16,29 @@ public class CustomisationSet : MonoBehaviour
     public List<Texture2D> eyes = new List<Texture2D>();
     public List<Texture2D> armour = new List<Texture2D>();
     public List<Texture2D> clothes = new List<Texture2D>();
+
     [Header("Index")]
     //index numbers for our current skin, hair, mouth, eyes textures
     public int skinIndex;
     public int hairIndex, mouthIndex, eyesIndex, armourIndex, clothesIndex;
+
     [Header("Renderer")]
     //renderer for our character mesh so we can reference a material list
     public Renderer character;
+
     [Header("Max Index")]
     //max amount of skin, hair, mouth, eyes textures that our lists are filling with
     public int skinMax;
     public int hairMax, mouthMax, eyesMax, armourMax, clothesMax;
+
     [Header("Character Name")]
     //name of our character that the user is making
-    public string charName = "Adventurer";
+    public string charName = "Adventurer";//String for playerName SAVING
+    public InputField playerNameInputField;//Player Name text
+    
+
     [Header("Stats")]
-    public characterClass charclass;
+    public characterClass charClass;
     public characterRace charRace;
     public int[] tempStats = new int[6];
     public int[] stats = new int[6];
@@ -49,9 +56,7 @@ public class CustomisationSet : MonoBehaviour
     public GameObject[] clothesButtons;
     public GameObject resetButton;
     public GameObject randomButton;
-    public GameObject playButton;
-    public InputField playerNameInputField;//Test for name
-    public static string playerName;//Test for name
+    public GameObject playButton; 
 
     [Header("Character Class and Stats")]
     public GameObject[] classButtons;
@@ -72,19 +77,10 @@ public class CustomisationSet : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
-        //TEST FOR NAME
-        if (playerName != null)
-        {
-            playerNameInputField.text = playerName;
-        }
-
-
-
         statArray = new string[] { "Strength", "Dexterity", "Constitution", "Wisdom", "Intelligence", "Charisma" };
         selectedClass = new string[] { "Paladin", "Priest", "Rogue", "Ranger", "Wizard" };
 
-
-
+        
         //in start we need to set up the following
 
         #region for loop to pull textures from file
@@ -152,6 +148,7 @@ public class CustomisationSet : MonoBehaviour
         //Convert Int Points to String;
         pointText.text = "Point" + ":" + Mathf.Round(points).ToString();
 
+        //Loops through all the statsText array
         for (int i = 0; i < statsTexts.Length; i++)
         {
 
@@ -263,18 +260,6 @@ public class CustomisationSet : MonoBehaviour
 
         #endregion
     }
-    #endregion
-
-    #region Save
-    void Save()
-    {
-
-        //SetInt for SkinIndex, HairIndex, MouthIndex, EyesIndex,Armour,Clothes
-        CharCustomSaveData.SavePlayerData(this);
-        //SetString CharacterName
-
-    }
-
     #endregion
 
     #region OnGUI
@@ -444,7 +429,7 @@ public class CustomisationSet : MonoBehaviour
                 stats[3] = 4;
                 stats[4] = 6;
                 stats[5] = 5;
-                charclass = characterClass.Paladin;
+                charClass = characterClass.Paladin;
                 break;
             case 1:
                 stats[0] = 5;
@@ -453,7 +438,7 @@ public class CustomisationSet : MonoBehaviour
                 stats[3] = 12;
                 stats[4] = 10;
                 stats[5] = 10;
-                charclass = characterClass.Priest;
+                charClass = characterClass.Priest;
                 break;
 
             case 2:
@@ -463,7 +448,7 @@ public class CustomisationSet : MonoBehaviour
                 stats[3] = 10;
                 stats[4] = 10;
                 stats[5] = 9;
-                charclass = characterClass.Ranger;
+                charClass = characterClass.Ranger;
                 break;
             case 3:
                 stats[0] = 6;
@@ -472,7 +457,7 @@ public class CustomisationSet : MonoBehaviour
                 stats[3] = 5;
                 stats[4] = 5;
                 stats[5] = 15;
-                charclass = characterClass.Rogue;
+                charClass = characterClass.Rogue;
                 break;
             case 4:
                 stats[0] = 5;
@@ -481,14 +466,14 @@ public class CustomisationSet : MonoBehaviour
                 stats[3] = 18;
                 stats[4] = 15;
                 stats[5] = 7;
-                charclass = characterClass.Wizard;
+                charClass = characterClass.Wizard;
                 break;
         }
     }
 
     #endregion
-    #region CANVAS UI REGION
-    #region Character Textures
+    #region *CANVAS UI REGION*
+    #region CHARACTER TEXTURES
     #region Skin Buttons
     public void SkinButtonLeft()
     {
@@ -581,15 +566,22 @@ public class CustomisationSet : MonoBehaviour
         SetTexture("Armour", Random.Range(0, armourMax - 1));
         SetTexture("Clothes", Random.Range(0, clothesMax - 1));
     }
+    #endregion
+    #region SAVING BUTTONS
+    void Save()
+    {
+        //SetInt for SkinIndex, HairIndex, MouthIndex, EyesIndex,Armour,Clothes
+        CharCustomSaveData.SavePlayerData(this);
+    }
     public void PlayButton()
     {
         Save();
         SceneManager.LoadScene(1);
-        SaveName(playerName);//Test for name
+        SaveName(charName);//Save name 
     }
     public void SaveName(string newName)
     {
-        playerName = newName;
+        charName = newName;
     }
 
     #endregion
@@ -885,7 +877,7 @@ public class CustomisationSet : MonoBehaviour
 
         }
         #endregion
-
+       
         #endregion
     }
 

@@ -14,16 +14,27 @@ public class CustomisationGet : MonoBehaviour {
     public int skin;
     public int hair, mouth, eyes, armour, clothes;
     public string characterName;
+    public string charClass;
     public Text playerNameText;
-
+    public Text charClassText;
+    [Header("Stats")]
+    public int strength;
+    public int dexterity, constitution, wisdom, intelligence, charisma;
+    
     #region Start
     private void Start()
     {
+        
         //our character reference connected to the Skinned Mesh Renderer via finding the Mesh
         character = GameObject.FindGameObjectWithTag("PlayerMesh").GetComponent<SkinnedMeshRenderer>();
+        
+        
         //Run the function LoadTexture
         LoadTexture();
-    
+        playerNameText.text = characterName;//Load character name
+        charClassText.text = charClass;//Load character class
+        
+
     }
 
     #endregion
@@ -36,6 +47,7 @@ public class CustomisationGet : MonoBehaviour {
         if(File.Exists(path))//if it does have a save file then load and SetTexture Skin, Hair, Mouth and Eyes from PlayerPrefs
         {
             CharDataToSave data = CharCustomSaveData.LoadPlayerData();
+            //Textures
             SetTexture("Skin", data.skin);
             skin = data.skin;
             SetTexture("Hair", data.hair);
@@ -48,6 +60,17 @@ public class CustomisationGet : MonoBehaviour {
             armour = data.armour;
             SetTexture("Clothes", data.clothes);
             clothes = data.clothes;
+
+            //Stats
+            strength = data.strength;
+            dexterity = data.dexterity;
+            constitution = data.constitution;
+            wisdom = data.wisdom;
+            intelligence = data.intelligence;
+            charisma = data.charisma;
+
+            //Char Class
+            charClass = data.charClass;
             //grab the gameObject in scene that is our character and set its Object name to the Characters name
             characterName = data.characterName; // FOR GUI
             //playerName = data.characterName.ToString; //FOR CANVAS
@@ -62,7 +85,8 @@ public class CustomisationGet : MonoBehaviour {
             SetTexture("Armour", customSet.armourIndex = 0);
             SetTexture("Clothes", customSet.clothesIndex = 0);
             //grab the gameObject in scene that is our character and set its Object name to the Characters name
-            characterName = customSet.charName;
+            characterName = customSet.charName; //set name to default
+            
 
         }
             
