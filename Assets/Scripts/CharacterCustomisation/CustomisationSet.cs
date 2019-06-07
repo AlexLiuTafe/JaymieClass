@@ -129,6 +129,9 @@ public class CustomisationSet : MonoBehaviour
         #endregion
         //connect and find the SkinnedMeshRenderer thats in the scene to the variable we made for Renderer
         character = GameObject.Find("Mesh").GetComponent<SkinnedMeshRenderer>();
+
+
+        #region do this after making the function SetTexture
         //SetTexture skin, hair, mouth, eyes to the first texture 0
         SetTexture("Skin", skinIndex = 0);
         SetTexture("Hair", hairIndex = 0);
@@ -155,8 +158,6 @@ public class CustomisationSet : MonoBehaviour
             statsTexts[i].text = statArray[i] + ":" + (Mathf.Round(tempStats[i] + stats[i]).ToString());
 
         }
-
-        #region do this after making the function SetTexture
 
         #endregion
     }
@@ -231,7 +232,7 @@ public class CustomisationSet : MonoBehaviour
         //our material arrays current material index's main texture is equal to our texture arrays current index
         mat[matIndex].mainTexture = textures[index];
         character.materials = mat;//our characters materials are equal to the material array
-
+        
         #endregion
 
         #region Set Material Switch

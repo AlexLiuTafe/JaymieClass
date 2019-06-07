@@ -10502,36 +10502,12 @@ MonoBehaviour:
   - 
   points: 10
   selectedIndex: 0
-  skinButtons:
-  - {fileID: 1303743939}
-  - {fileID: 1508252803}
-  hairButtons:
-  - {fileID: 1959199047}
-  - {fileID: 588604315}
-  mouthButtons:
-  - {fileID: 1343443133}
-  - {fileID: 1505366437}
-  eyesButtons:
-  - {fileID: 1358685179}
-  - {fileID: 658714624}
-  armourButtons:
-  - {fileID: 1339642931}
-  - {fileID: 1422396069}
-  clothesButtons:
-  - {fileID: 1391155311}
-  - {fileID: 704376062}
-  resetButton: {fileID: 328946206}
-  randomButton: {fileID: 1474752160}
-  playButton: {fileID: 1608166542}
   selectedClass:
   - 
   - 
   - 
   - 
   - 
-  classButtons:
-  - {fileID: 712455476}
-  - {fileID: 1191555688}
   strengthButtons:
   - {fileID: 1145229425}
   - {fileID: 631129904}
@@ -12488,6 +12464,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Warrior
       objectReference: {fileID: 0}
+    - target: {fileID: 4012477570101158027, guid: d19c73646b52480479158f63aec18b01,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b51e28b76fa28d04d8546f15b7b5f1fa, type: 3}
     - target: {fileID: 4012477570112893329, guid: d19c73646b52480479158f63aec18b01,
         type: 3}
       propertyPath: m_LocalPosition.x
